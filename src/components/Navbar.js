@@ -6,20 +6,38 @@ import {
   Switch,
   NavLink,
 } from "react-router-dom";
-import { Flex, Box } from "@chakra-ui/layout";
+import { Flex, Box, Spacer, Heading, Button } from "@chakra-ui/react";
+import { EmailIcon, SmallAddIcon } from "@chakra-ui/icons";
 
 function Navbar(props) {
   return (
     <Box p="3">
       <Router>
-        <Flex>
+        <Flex mb="5">
           <Box>
-            <NavLink to="/">Products</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/">
+              <Heading as="h2" size="lg">
+                Products
+              </Heading>
+            </NavLink>
+            <NavLink to="/contact">
+              <Heading as="h2" size="lg">
+                Contact
+              </Heading>
+            </NavLink>
           </Box>
+          <Spacer />
           <Box>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/signup">Sign Up</NavLink>
+            <NavLink to="/login">
+              <Button mr="2" leftIcon={<EmailIcon />} colorScheme="blue">
+                Login
+              </Button>
+            </NavLink>
+            <NavLink to="/signup">
+              <Button leftIcon={<SmallAddIcon />} colorScheme="blue">
+                Sign Up
+              </Button>
+            </NavLink>
           </Box>
         </Flex>
         <Switch>
