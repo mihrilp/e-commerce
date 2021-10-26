@@ -1,14 +1,13 @@
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
 import {
-  Box,
   Flex,
-  Text,
   Button,
   FormControl,
   FormLabel,
   Input,
-  Heading,
   Alert,
+  AlertIcon,
+  AlertTitle,
 } from "@chakra-ui/react";
 
 import SignUpSchema from "./SignUpSchema";
@@ -26,9 +25,6 @@ function SignUp(props) {
     });
   return (
     <Flex direction="column" justify="center" align="center">
-      <Box my={5}>
-        {errors.general && <Alert status="error">{errors.general}</Alert>}
-      </Box>
       <form onSubmit={handleSubmit}>
         <FormControl id="email" isRequired>
           <FormLabel>Email</FormLabel>
@@ -41,6 +37,12 @@ function SignUp(props) {
             isInvalid={touched.email && errors.email}
             mb="5"
           />
+          {errors.email && touched.email && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle>{errors.email}</AlertTitle>
+            </Alert>
+          )}
         </FormControl>
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
@@ -54,12 +56,18 @@ function SignUp(props) {
             mb="5"
             width="400px"
           />
+          {errors.password && touched.password && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle>{errors.password}</AlertTitle>
+            </Alert>
+          )}
         </FormControl>
-        <FormControl id="password" isRequired>
+        <FormControl id="passwordConfirm" isRequired>
           <FormLabel>Confirm Password</FormLabel>
           <Input
             variant="filled"
-            placeholder="password"
+            placeholder="confirm password"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.passwordConfirm}
@@ -67,6 +75,12 @@ function SignUp(props) {
             mb="5"
             width="400px"
           />
+          {errors.passwordConfirm && touched.passwordConfirm && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle>{errors.passwordConfirm}</AlertTitle>
+            </Alert>
+          )}
         </FormControl>
         <Button
           mt={4}

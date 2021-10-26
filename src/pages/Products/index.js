@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Grid } from "@chakra-ui/react";
-import Product from "../components/Product";
+import Product from "../../components/Product/index";
 
 import axios from "axios";
 
